@@ -1,0 +1,76 @@
+<nz-layout>
+    <nz-sider nzCollapsible [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
+      <div class="logo"></div>
+      <ul nz-menu nzTheme="dark" nzMode="inline">
+        <li nz-submenu nzTitle="Admin" nzIcon="team">
+          <ul>
+            <li  nz-menu-item><a [routerLink]="'users'"> <i nz-icon nzType="user" ></i> User </a></li>
+          </ul>
+        </li>
+        
+        <li nz-submenu nzTitle="Basic Operation" nzIcon="tablet">
+          <ul>
+            <li nz-menu-item> <a [routerLink]="'basic/contractors'"> <i nz-icon nzType="contacts"></i> Contractor </a></li>
+            <li nz-menu-item><i nz-icon nzType="ordered-list"></i> Product Category</li>
+            <li nz-menu-item><i nz-icon nzType="gift"></i> Product</li>
+            <li nz-menu-item><i nz-icon nzType="experiment"></i> Measurements</li>
+          </ul>
+        </li>
+        <li nz-submenu nzTitle="Transaction" nzIcon="transaction">
+          <ul>
+            <li nz-menu-item><i nz-icon nzType="import"></i> Phurcase</li>
+            <li nz-menu-item><i nz-icon nzType="delivered-procedure"></i> Sales</li>
+          </ul>
+        </li>
+        <li nz-submenu nzTitle="Reports/Desboard" nzIcon="printer">
+          <ul>
+            <li nz-menu-item><i nz-icon nzType="stock"></i> Stock Report</li>
+            <li nz-menu-item><i nz-icon nzType="line-chart"></i> Income</li>
+            
+          </ul>
+        </li>
+      </ul>
+    </nz-sider>
+    <nz-layout>
+      <nz-header>
+            
+      <span
+          class="trigger"
+          nz-icon
+          [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
+          (click)="isCollapsed = !isCollapsed"
+        ></span>
+        <nz-button-group>
+          <button nz-button>{{username}}</button>
+          <button nz-button nz-dropdown [nzDropdownMenu]="menu2" nzPlacement="bottomRight">
+            <span nz-icon nzType="user"></span>
+          </button>
+        </nz-button-group>
+        <nz-dropdown-menu #menu2="nzDropdownMenu">
+          <ul nz-menu>
+            <li nz-menu-item ><a (click)="changePassword()" > <i nz-icon nzType="edit" ></i> Change Password</a></li>
+            <li nz-menu-item><a (click)="Logout()" > <i nz-icon nzType="logout" ></i> Log Out </a></li>
+          </ul>
+        </nz-dropdown-menu>
+
+        <!-- <span nz-icon nzType="logout" (click)="Logout()" nzTheme="outline"></span> -->
+      
+
+      </nz-header>
+      <nz-content>
+        <nz-breadcrumb>
+          <nz-breadcrumb-item>User</nz-breadcrumb-item>
+          <nz-breadcrumb-item>Bill</nz-breadcrumb-item>
+        </nz-breadcrumb>
+        <!-- <div class="inner-content">Bill is a cat.</div> -->
+        <div class="inner-content">
+          <router-outlet></router-outlet> 
+        </div>
+      </nz-content>
+      <nz-footer>Copy Rights  ©2024 Implement By ChayaPath IT</nz-footer>
+    </nz-layout>
+  </nz-layout>
+
+
+
+  
