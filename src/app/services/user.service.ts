@@ -19,17 +19,17 @@ export class UserService {
 //#region  
 Gets() {
   
-  return this.http.get<User[]>(this.rootURI+`/`+this.controllerName +`/Gets`, this.httpOptions);
+  return this.http.get<User[]>(this.rootURI+`/`+this.controllerName +`/GetUsers`, this.httpOptions);
 }
 
 
 
 Get( Id:any) {
   debugger;
-  return this.http.get(this.rootURI+`/`+this.controllerName +`/Get?Userid=${Id}`, this.httpOptions);
+  return this.http.get(this.rootURI+`/`+this.controllerName +`/GetUserById?Userid=${Id}`, this.httpOptions);
 }
 Delete(Id: any) {
-  return this.http.delete(this.rootURI+`/`+this.controllerName +`/Delete?Userid=${Id}`,  this.httpOptions);
+  return this.http.delete(this.rootURI+`/`+this.controllerName +`/DeleteUser?Userid=${Id}`,  this.httpOptions);
 }
 //
 Registration(obj: any): Observable<any> {

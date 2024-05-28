@@ -76,13 +76,13 @@ export class LoginComponent implements OnInit {
   }>;
 
   isLoading: boolean = false;
-  UserName="Abdullah3652"; Password = "Kc987#2"; Message = "";
+  UserName="Abdullah3652"; Password = "Kc987#2"; Message = "";  //Kc987#2
    
   constructor(private fb: NonNullableFormBuilder,  private _httpclient:HttpClient, private Authservice:  AuthService,  private CommonService: CommonService, ) {
     //this.UserName="Admin"; this.Password ="123"; 
     this.validateForm= this.fb.group({
       userName: ['Abdullah3652', [Validators.required]],
-      password: ['Kc987#2', [Validators.required]],
+      password: ['123456', [Validators.required]],
       remember: [true]
     });
 

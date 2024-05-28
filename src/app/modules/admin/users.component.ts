@@ -24,14 +24,14 @@ import { Router, ActivatedRoute } from '@angular/router';
   </thead>
   <tbody>
     <tr *ngFor="let data of basicTable.data">
-      <td>{{ data.name }}</td>
-      <td>{{ data.username }}</td>
+      <td>{{ data.fullName }}</td>
+      <td>{{ data.userName }}</td>
       <td>{{ data.email }}</td>
       <td>{{ data.phoneNumber }}</td>
       <td>{{ data.address }}</td>
       <td>
-        <a (click)="Edit(data.userId)">Edit</a>&nbsp;&nbsp;&nbsp;
-        <a nz-popconfirm nzPopconfirmTitle="Sure to delete?" (nzOnConfirm)="deleteRow(data.userId)">Delete</a>
+        <a (click)="Edit(data.id)">Edit</a>&nbsp;&nbsp;&nbsp;
+        <a nz-popconfirm nzPopconfirmTitle="Sure to delete?" (nzOnConfirm)="deleteRow(data.id)">Delete</a>
       </td>
     </tr>
   </tbody>
@@ -45,7 +45,7 @@ export class UsersComponent {
 
   httpOptions  =<any> "";
   listOfData: User[] = [
-    { userId : 'asd45452s5d', name: 'abdiu',  username: 'abdulla', email:'mahabub775@d',phoneNumber: '1254664744', address: 'New York No. 1 Lake Park' , roleNames:[]}
+    { id : 'asd45452s5d', fullName: 'abdiu',  userName: 'abdulla', email:'mahabub775@d',phoneNumber: '1254664744', address: 'New York No. 1 Lake Park' , roleNames:[]}
    ];
 
   constructor( private _httpclient:HttpClient, private router: Router, private Auth:  AuthService,  private UserService:  UserService,private ar: ActivatedRoute ){
@@ -84,7 +84,7 @@ export class UsersComponent {
       () => {
         //console.log('User deleted successfully');
         // Optionally, update user list or show a success message
-        this.listOfData = this.listOfData.filter(d => d.userId !== userId);
+        this.listOfData = this.listOfData.filter(d => d.id !== userId);
       },
       error => {
         console.error('Error deleting user:', error);
@@ -94,6 +94,7 @@ export class UsersComponent {
   }
 
   Edit(userId:string){
+    debugger
     //this.router.navigate(['/user', userId]);
     this.router.navigate(['admin/user',userId]);
   }

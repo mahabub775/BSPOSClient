@@ -56,7 +56,7 @@ export class ChangePasswordComponent {
       return;  
     }
     //this.Auth.GetuserLoginInfo().user.name:"";
-    this._httpclient.put<any>(this.Auth.rootURI +'/user/ChangePassword', {userId: this.Auth.GetuserLoginInfo().user.id, currentPassword: this.currentPassword,newPassword: this.newPassword},  this.httpOptions).subscribe(data => {
+    this._httpclient.put<any>(this.Auth.rootURI +'/user/ChangePassword', {UserId: this.Auth.GetuserLoginInfo().user.id, CurrentPassword: this.currentPassword,NewPassword: this.newPassword, ConfirmNewPassword:this.confirmPassword},  this.httpOptions).subscribe(data => {
   debugger;
       console.log(data);
       this.commonService.SaveMessage(`Password changed successfully`);
@@ -64,17 +64,6 @@ export class ChangePasswordComponent {
   // Handle success
   
 });
-
-
-  //   this.authService.changePassword(this.currentPassword, this.newPassword)
-  //     .subscribe(
-  //       () => {
-  //         this.commonService.SaveMessage('Password changed successfully');
-  //       },
-  //       (error) => {
-  //         this.commonService.ErrorMessage(error.message || 'Failed to change password');
-  //       }
-  //     );
-  // }
+ 
 }
 }

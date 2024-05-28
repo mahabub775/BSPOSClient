@@ -14,11 +14,11 @@ import { AuthService } from '../../core/services/auth.services';
   template: `
   <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm()">
   <nz-form-item>
-    <nz-form-label      [nzSm]="6"      [nzXs]="24"      nzFor="name"      nzRequired      nzTooltipTitle="What do you want other to call you"    >
+    <nz-form-label      [nzSm]="6"      [nzXs]="24"      nzFor="fullName"      nzRequired      nzTooltipTitle="What do you want other to call you"    >
      <span>Full Name</span>
     </nz-form-label>
     <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your name!">
-      <input nz-input id="name" formControlName="name" />
+      <input nz-input id="name" formControlName="fullName" />
     </nz-form-control>
   </nz-form-item>
 
@@ -27,7 +27,7 @@ import { AuthService } from '../../core/services/auth.services';
    <span>User Name</span>
   </nz-form-label>
   <nz-form-control [nzSm]="14" [nzXs]="24" nzErrorTip="Please input your username!">
-    <input nz-input id="username" formControlName="username" />
+    <input nz-input id="username" formControlName="userName" />
   </nz-form-control>
 </nz-form-item>
 
@@ -95,10 +95,10 @@ export class UserComponent  {
   userid:any;
   private User : any;
   validateForm: FormGroup<{
-    userId: FormControl<string>;
+    id: FormControl<string>;
     email: FormControl<string>;
-    name: FormControl<string>;
-    username: FormControl<string>;
+    fullName: FormControl<string>;
+    userName: FormControl<string>;
     phoneNumberPrefix: FormControl<'+88'>;
     phoneNumber: FormControl<string>;
     address: FormControl<string>;
@@ -108,10 +108,10 @@ export class UserComponent  {
    
     this.httpOptions = { headers:this.Auth.CurstomHeader() };
     this.validateForm = this.fb.group({
-      userId:'',
+      id:'',
       email: ['', [Validators.email, Validators.required]],
-      name: ['', [Validators.required]],
-      username: ['', [Validators.required]],
+      fullName: ['', [Validators.required]],
+      userName: ['', [Validators.required]],
       phoneNumberPrefix: '+88' as '+88',
       phoneNumber: ['', [Validators.required]],
       address:''
@@ -125,10 +125,10 @@ export class UserComponent  {
           this.User=r as any;
           console.log(this.User);
           this.validateForm = this.fb.group({
-            userId: [this.User.userId],
+           id: [this.User.userId],
             email: [this.User.email, [Validators.email, Validators.required]],
-            name: [this.User.name, [Validators.required]],
-            username: [this.User.userName, [Validators.required]],
+            fullName: [this.User.fullName, [Validators.required]],
+            userName: [this.User.userName, [Validators.required]],
             phoneNumberPrefix: '+88' as '+88',
             phoneNumber: [this.User.phoneNumber, [Validators.required]],
             address: [this.User.address], 
@@ -159,8 +159,8 @@ export class UserComponent  {
       var oFormvalue = this.validateForm.value;
       var oUser = { 
            Id:this.userid,
-           name: oFormvalue.name,
-           userName: oFormvalue.username, 
+           fullName: oFormvalue.fullName,
+           userName: oFormvalue.userName, 
            email:oFormvalue.email,
            phoneNumber:oFormvalue.phoneNumber,
            address:oFormvalue.address,

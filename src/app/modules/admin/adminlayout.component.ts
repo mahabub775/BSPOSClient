@@ -60,7 +60,7 @@ export class AdminlayoutComponent implements  AfterViewInit {
   constructor(private _router: Router, private Auth : AuthService, private jwthelper:JwtHelperService) {
     debugger;
     this.logininfo = this.Auth.GetuserLoginInfo();
-    this.username = this.logininfo!=null?  this.logininfo.user.name:"";
+    this.username = this.logininfo!=null?  this.logininfo.user.fullName:"";
   }
 
   ngAfterViewInit(): void {
