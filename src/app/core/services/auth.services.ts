@@ -11,8 +11,8 @@ export class AuthService implements CanActivate {
 
  // constructor() { }
 
- //readonly rootURI =  'https://localhost:7164/api'; 
- readonly rootURI =  'https://pos.binarysoftbd.dev/api'; 
+ readonly rootURI =  'https://localhost:44301/v1'; 
+ //readonly rootURI =  'https://pos.binarysoftbd.dev/api'; 
  oLoggedInUser:any;
   constructor( private  Router :Router,  public  jwthelper  :JwtHelperService,  private http: HttpClient  ) 
   { 

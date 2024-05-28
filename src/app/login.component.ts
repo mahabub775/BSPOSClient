@@ -104,7 +104,9 @@ export class LoginComponent implements OnInit {
         console.log(o);
           if (o.ok==true) {
             var oReturnobj = <any>o.body;
-            const token = oReturnobj.token;
+            //const token = oReturnobj.token;
+            const token = oReturnobj.token.result.jwtToken;
+            
             localStorage.setItem('jwt',token);
             debugger;
             let logininfo =   { user: oReturnobj.user, userRoles : oReturnobj.userRoles};
@@ -123,33 +125,6 @@ export class LoginComponent implements OnInit {
       })
 
 
-
-    //   var oLoginObject  = {userName:this.validateForm.value.userName, password:this.validateForm.value.password}; 
-    //   this._httpclient.post(this.Authservice.rootURI+'/Auth/Login',oLoginObject).subscribe(respons =>{
-    //     const token = (<any>respons).token;
-    //     localStorage.setItem('jwt',token);
-    //     debugger;
-    //     let logininfo =   { user: (<any>respons).user, userRoles : (<any>respons).userRoles};
-    //     localStorage.setItem('logininfo',JSON.stringify(logininfo));
-    //     this.isLoading = false;
-    //     this.LoginResult.emit("sucess");
-    //   },err=>{
-    //     debugger;
-    //     console.log(err);
-    //     this.CommonService.ErrorMessage (`User or password mismatch`);
-    //     this.Message = err.statusText; 
-    //     this.LoginResult.emit("fail");
-    //     this.isLoading = false;
-    //   }
-    //   );
-
-    // } else {
-    //   Object.values(this.validateForm.controls).forEach(control => {
-    //     if (control.invalid) {
-    //       control.markAsDirty();
-    //       control.updateValueAndValidity({ onlySelf: true });
-    //     }
-    //   });
     }
   }
 
